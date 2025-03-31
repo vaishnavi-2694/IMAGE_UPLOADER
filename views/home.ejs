@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>File Upload</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gradient-to-r from-blue-400 to-purple-500 flex items-center justify-center min-h-screen">
+  <div class="bg-white p-8 rounded-xl shadow-lg w-96 text-center">
+    <h2 class="text-3xl font-bold mb-6 text-gray-700">Upload a File</h2>
+    <form action="/upload" method="POST" enctype="multipart/form-data" class="space-y-4">
+      <div class="flex items-center justify-center w-full">
+        <label class="flex flex-col items-center w-full px-4 py-6 bg-gray-100 border-2 border-dashed border-gray-300 rounded-lg cursor-pointer hover:border-blue-500 hover:bg-gray-200">
+          <svg class="w-8 h-8 text-gray-500 mb-2" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M7 16V12M17 16V12M5 20h14a2 2 0 002-2V10a2 2 0 00-2-2h-4.586a2 2 0 01-1.414-.586l-1.414-1.414A2 2 0 009.586 6H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path>
+          </svg>
+          <span class="text-gray-600">Choose a file</span>
+          <input type="file" name="profileImage" class="hidden" required>
+        </label>
+      </div>
+      <button type="submit" class="w-full bg-blue-500 text-white py-2 rounded-lg hover:bg-blue-600 transition-all">
+        Upload
+      </button>
+    </form>
+    <div id="successMessage" class="hidden mt-4 p-3 bg-green-100 text-green-800 rounded-lg">
+      File uploaded successfully! <a href="/" class="text-blue-500 hover:underline">Go Back</a>
+    </div>
+  </div>
+
+  <script>
+    const urlParams = new URLSearchParams(window.location.search);
+    if (urlParams.has('success')) {
+      document.getElementById('successMessage').classList.remove('hidden');
+    }
+  </script>
+</body>
+</html>
